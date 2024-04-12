@@ -85,4 +85,11 @@ project(":core") {
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
         
     }
+    eclipse {
+    classpath {
+       downloadSources=true
+       downloadJavadoc = true
+    }
 }
+}
+
