@@ -1,24 +1,19 @@
 package dev.bomberman;
 
-import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+
+import dev.bomberman.world.World;
 
 public class BombermanApplication extends ApplicationAdapter {
   private FitViewport viewport;
   private Camera camera;
-  private Texture player;
-  private Texture block;
-  private Texture bomb;
-  private Engine ecs = new Engine();
-  private Animation<TextureRegion> idleAnimation;
+  private World ecs = new World();
+  private AssetManager manager = new AssetManager();
 
   @Override
   public void create() {
@@ -35,6 +30,7 @@ public class BombermanApplication extends ApplicationAdapter {
   public void dispose() {
     ecs.removeAllEntities();
     ecs.removeAllSystems();
+    manager.dispose();
   }
   @Override
   public void resize(int width,  int heigth) {
